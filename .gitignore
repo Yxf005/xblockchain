@@ -1,0 +1,10 @@
+
+.idea/modules.xml
+
+.idea/vcs.xml
+
+*.xml
+
+*.iml
+
+pkg/darwin_amd64/core.a
