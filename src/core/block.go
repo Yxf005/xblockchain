@@ -12,6 +12,7 @@ type Block struct {
 	Data []byte            // 区块内容
 	PreBlockHash []byte    // 前一个区块的hash 值
 	Hash []byte           // 此区块的 hash 值
+	Nonce int
 }
 
 /**
@@ -19,8 +20,14 @@ type Block struct {
  */
 func NewBlock(data string, preBlockHash []byte)  *Block {
 
-	block := &Block{time.Now().Unix(), []byte(data), preBlockHash, []byte{}}
-	block.SetHash()
+	block := &Block{time.Now().Unix(), []byte(data), preBlockHash, []byte{}, 0}
+
+    // mine
+	pow := NewProofOfWork(block)
+	nonce, hash := pow.Execute()
+
+	block.Hash=hash[:]
+	block.Nonce=nonce
 	return block
 }
 

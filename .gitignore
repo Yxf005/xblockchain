@@ -8,3 +8,5 @@
 *.iml
 
 pkg/darwin_amd64/core.a
+
+*.a
